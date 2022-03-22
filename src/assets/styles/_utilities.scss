@@ -1,0 +1,188 @@
+//== margin padding
+// [pd, mg]-[tp, bt, lf, rg]-[5, 10, 15, ..., 95, 100]
+$directions: (
+  'tp': 'top',
+  'bt': 'bottom',
+  'lf': 'left',
+  'rg': 'right'
+);
+$dimensions: (
+  'pd': 'padding',
+  'mg': 'margin'
+);
+//获取padding margin间隔
+@each $dim in $dimensions {
+  //循环四个方向
+  @each $dir in $directions {
+    @for $i from 1 through 20 {
+      $size: $i * 5;
+      .#{nth($dim,1)}-#{nth($dir,1)}-#{$size} {
+        #{nth($dim,2)}-#{nth($dir,2)}: #{$size}px;
+      }
+    }
+  }
+}
+
+//== width
+.con-width {
+  width: $contentWidth;
+  margin: 0 auto;
+}
+
+//== color
+.primary-text {
+  color: $primaryColor;
+}
+.success-text {
+  color: $successColor;
+}
+.error-text {
+  color: $errorColor;
+}
+.warn-text {
+  color: $warnColor;
+}
+.link-text {
+  color: $linkColor;
+}
+
+//== display
+.hidden {
+  display: none;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+//== text-align
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-initial {
+  text-align: initial;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.clearfix {
+  &:before,
+  &:after {
+    content: ''; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.text-inline {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.text-inline2 {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.space-nowrap {
+  white-space: nowrap;
+}
+
+// css3垂直居中
+.item-center {
+  display: flex;
+  align-items: center;
+}
+// 水平两侧对齐
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+.space-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.justify-evenly {
+  display: flex;
+  justify-content: space-between;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+  }
+}
+.justify-flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.display-flex {
+  display: flex;
+}
+.flex1 {
+  flex: 1;
+  overflow: hidden;
+}
+.flex0 {
+  flex: 0;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-dir-column {
+  flex-direction: column;
+}
+
+// 图片太大时显示中间部分
+.img-center {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  > img {
+    max-width: initial;
+    // height: 100%;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+.img-obj-fit {
+  position: relative;
+  overflow: hidden;
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

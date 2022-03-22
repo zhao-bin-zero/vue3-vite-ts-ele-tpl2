@@ -1,0 +1,125 @@
+// btn base样式
+.btn {
+  &:not(.is-disabled) {
+    &:hover {
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+      // color: #fff;
+    }
+  }
+}
+// button大小
+//超大型
+// .btn-xl {
+//   height: 58px;
+//   line-height: 58px;
+//   padding: 0 50px;
+//   font-size: 26px;
+// }
+// 大型
+// .btn-lg {
+//   height: 44px;
+//   line-height: 44px;
+//   padding: 0 25px;
+//   font-size: 16px;
+// }
+// 小型
+// .btn-sm {
+//   height: 30px;
+//   line-height: 30px;
+//   padding: 0 10px;
+//   font-size: 14px;
+// }
+// 迷你
+// .btn-xs {
+//   height: 22px;
+//   line-height: 22px;
+//   padding: 0 5px;
+//   font-size: 12px;
+// }
+
+// <el-button size=""></el-button>
+// el-button--default 40px
+// el-button--medium 36px
+// el-button--small 32px
+// el-button--mini 28px
+
+// width100%
+.btn-100 {
+  width: 100%;
+}
+
+.btn-200 {
+  min-width: 200px;
+}
+
+.btn-300 {
+  min-width: 300px;
+}
+
+// 圆角
+// <el-button round>100%</el-button>
+// .btn-radius {
+//   border-radius: 100px;
+// }
+// .btn-radius10 {
+//   border-radius: 10px;
+// }
+
+// @include responsive(phone-screens) {
+//   .btn {
+//     min-width: px2rem(240);
+//   }
+// }
+
+// 颜色
+// <el-button class="btn btn-primary"> 登录 </el-button>
+// <el-button class="btn btn-primary-hollow"> <i class="el-icon-top"></i>登录 </el-button>
+// <el-button type="text" class="btn link-primary-color"><i class="el-icon-top"></i> 登录 </el-button>
+// <el-button class="btn btn-info-disabled" disabled> 登录 </el-button>
+// <el-button class="btn btn-default-hollow"> 登录 </el-button>
+.link-color {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $linkColor;
+  }
+  span {
+    border-bottom-color: $linkColor;
+  }
+}
+.link-primary-color {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primaryColor;
+  }
+  span {
+    border-bottom-color: $primaryColor;
+  }
+}
+
+.btn-primary {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    border-color: $primaryColor;
+    background-color: $primaryColor;
+  }
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: #fff;
+      border-color: $primaryColor;
+      background-color: $primaryColor;
+      // opacity: 0.5;
+      // filter: alpha(opacity=50);
+    }
+  }
+}
