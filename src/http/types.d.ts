@@ -42,5 +42,5 @@ export interface ListPageJavaGetParams {
 // 分页列表返回参数
 export interface ListPageRes<T> {
   total: number // 总数量
-  list: T[]
+  items: T[]
 }

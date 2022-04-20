@@ -5,7 +5,7 @@ import getUrl from './api'
 import instance from './instance'
 import { AxiosRequest, CustomResponse } from './types'
 import { ElMessage } from 'element-plus'
-import router from '@/router'
+import eventBus from '@/common/eventBus'
 import store from '@/store'
 import { codeErrorMap, errorMap } from '@/common/constant'
 
@@ -13,7 +13,7 @@ class Abstract {
   // 自定义header头
   protected headers: object = {
     repeat_request_cancel: true, // 是否开启取消重复请求, 默认为 true
-    loading: true // 是否开启loading层效果, 默认为true
+    request_loading: true // 是否开启loading层效果, 默认为true
   }
 
   private apiAxios({
@@ -27,8 +27,7 @@ class Abstract {
     responseType
   }: AxiosRequest): Promise<CustomResponse<any>> {
     // url解析
-    const _url = (url as string).split('.')
-    url = getUrl(_url[0], _url[1])
+    url = getUrl(url)
 
     return new Promise((resolve, reject) => {
       // console.log(params)
@@ -52,7 +51,8 @@ class Abstract {
             if (data.code === 20004 || data.code === 20005) {
               // token失效，需要登录
               store.dispatch('info/logout')
-              router.replace('/login')
+              eventBus.emit('loginModelStatus', true)
+              // router.replace('/login')
             }
           }
           resolve(data)

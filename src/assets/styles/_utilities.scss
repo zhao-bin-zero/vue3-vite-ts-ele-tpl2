@@ -123,6 +123,11 @@ $dimensions: (
   justify-content: space-between;
   align-items: center;
 }
+.space-between-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 .justify-center {
   display: flex;
   justify-content: center;

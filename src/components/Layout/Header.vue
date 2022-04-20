@@ -1,6 +1,6 @@
 <template>
   <el-header class="layout__header">
-    <div class="item-center web-width">
+    <div class="item-center con-width">
       <div class="header__logo">
         <!-- <img src="@assets/images/logo.png" alt="" /> -->
         LOGO

@@ -20,15 +20,18 @@ const urlDict: UrlDict = {
   }
 }
 
-const getUrl = (biz: string, UrlName: string): string => {
+const getUrl = (url: string): string => {
+  const _url = url.split('.')
+  const biz = _url[0]
+  const UrlName = _url[1]
   try {
     const bizKeys = Object.keys(urlDict)
     if (bizKeys.indexOf(biz) < 0) {
-      throw new Error('biz not in Dict')
+      throw new Error(`${biz} biz not in Dict`)
     }
     let hostname = urlDict[biz][UrlName]
     if (!hostname) {
-      throw new Error('url not in Dict')
+      throw new Error(`${UrlName} url not in Dict`)
     }
     if (hostname.substr(0, 1) === '/') {
       hostname = hostname.substr(1)

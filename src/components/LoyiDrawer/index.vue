@@ -14,6 +14,10 @@
 
 <script lang="ts">
   import { defineComponent, provide, ref } from 'vue'
+  export interface DrawerInstance {
+    open: () => {}
+    close: () => {}
+  }
   export default defineComponent({
     name: 'LoyiDrawer',
     props: {

@@ -6,7 +6,7 @@ import { errorMap } from '@/common/constant'
 
 // axios 实例
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_APP_API,
+  baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 10000,
   responseType: 'json'
 })
@@ -21,7 +21,7 @@ const loadingInstance = {
  * @param request
  */
 const openLoading = (request: AxiosRequestConfig) => {
-  if (request?.headers?.loading) {
+  if (request?.headers?.request_loading) {
     loadingInstance.count++
     if (loadingInstance.count === 1) {
       loadingInstance.target = ElLoading.service({
@@ -36,8 +36,8 @@ const openLoading = (request: AxiosRequestConfig) => {
  * @param request
  */
 const closeLoading = (request: AxiosRequestConfig) => {
-  // if (!request || request?.headers?.loading) { // 取消请求返回request不存在，count宁少不多 tip: 单次请求loading不统一会有问题
-  if (request?.headers?.loading) {
+  // if (!request || request?.headers?.request_loading) { // 取消请求返回request不存在，count宁少不多 tip: 单次请求loading不统一会有问题
+  if (request?.headers?.request_loading) {
     // 如果request不存在，则loading不会再消失，所以要处理所有request不存在情况
     if (loadingInstance.count > 0) loadingInstance.count--
     if (loadingInstance.count === 0) {

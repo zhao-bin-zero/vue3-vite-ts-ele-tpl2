@@ -2,6 +2,7 @@ import type { Module, Store } from 'vuex'
 import { IRootState } from '@/store'
 import { getUserInfo, UserInfoType } from '@/http/modules'
 import { delCookie, getCookie } from '@/common/utils'
+import { isEmptyObj } from '@/common/is'
 
 export interface InfoState {
   user: UserInfoType
@@ -35,7 +36,8 @@ const info: Module<InfoState, IRootState> = {
     }
   },
   getters: {
-    user: (state) => state.user
+    user: (state) => state.user,
+    isLogin: (state) => !isEmptyObj(state.user)
   }
 }
 export default info

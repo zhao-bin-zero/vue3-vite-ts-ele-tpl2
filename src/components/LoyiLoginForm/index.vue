@@ -52,6 +52,7 @@
   import { setCookie } from '@/common/utils'
   import { validateCode, validateMobile } from '@/common/validate'
   import CountDown from '@/components/CountDown/index.vue'
+  import eventBus from '@/common/eventBus'
   export default defineComponent({
     name: 'LoginFrom',
     components: {
@@ -133,6 +134,8 @@
             value: token
           })
           storeActions.getUser()
+          // 需通知全局事件
+          eventBus.emit('loginSucc')
           router.replace('/')
         }
       }

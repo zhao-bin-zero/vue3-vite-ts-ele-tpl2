@@ -1,24 +1,45 @@
-<!--  -->
+<!-- ele dialog -->
 <template>
   <el-dialog
     custom-class="loyi__dialog"
     v-model="visible"
-    :show-close="false"
+    :show-close="showClose"
     :destroy-on-close="true"
-    title="titles"
+    :title="titles"
     :lock-scroll="true"
+    :width="width"
+    :close-on-click-modal="closeOnClickModal"
   >
+    <template #title>
+      <slot name="title"></slot>
+    </template>
     <slot></slot>
   </el-dialog>
 </template>
 
 <script lang="ts">
   import { defineComponent, ref, provide } from 'vue'
+  export interface DialogInstance {
+    open: () => {}
+    close: () => {}
+  }
   export default defineComponent({
     name: 'LoyiDialog',
     props: {
       titles: {
         type: String
+      },
+      width: {
+        type: String,
+        default: '500px'
+      },
+      closeOnClickModal: {
+        type: Boolean,
+        default: true
+      },
+      showClose: {
+        type: Boolean,
+        default: true
       }
     },
     setup() {
@@ -42,17 +63,17 @@
 <style lang="scss">
   .loyi__dialog {
     .el-dialog__header {
-      border-bottom: 1px solid #eee;
-      padding: 14px 20px;
+      // border-bottom: 1px solid #eee;
+      padding: 17px 20px 10px;
       .el-dialog__title {
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 20px;
+        font-weight: 600;
         color: #333333;
-        line-height: 24px;
+        line-height: 28px;
       }
     }
     .el-dialog__body {
-      padding: 24px 0;
+      padding: 20px;
     }
   }
 </style>
