@@ -321,6 +321,14 @@ export const accRem = (arg1: number, arg2: number): number => {
   const r2 = Number(arg2.toString().replace('.', ''))
   return ((r1 * Math.pow(10, t2)) % (r2 * Math.pow(10, t1))) / Math.pow(10, t2 + t1)
 }
+//js 科学计数法显示为字符串
+export const toNonExponential = (num: number, init = '0') => {
+  // console.log(num, typeof num)
+  if (isNaN(num)) return init
+  const num2 = Number(num)
+  const m: any = num2.toExponential().match(/\d(?:\.(\d*))?e([+-]\d+)/)
+  return num2.toFixed(Math.max(0, (m[1] || '').length - m[2]))
+}
 
 export const zeroToFixed = (num: number, digits: number): string => {
   if (isNumberNoNaN(num)) {
